@@ -7,20 +7,16 @@ package com.listase.modelo;
 
 import java.io.Serializable;
 
-/**
- *
- * @author carloaiza
- */
+
 public class Infante implements  Serializable{
-    private String nombre; //null
-    private short codigo; //0
-    private byte edad; //0
+    private String nombre; 
+    private short codigo; 
+    private byte edad; 
 
     public Infante() {
         this.edad=1;
     }
 
-    
     
     public Infante(String nombre, short codigo, byte edad) {
         this.nombre = nombre;
