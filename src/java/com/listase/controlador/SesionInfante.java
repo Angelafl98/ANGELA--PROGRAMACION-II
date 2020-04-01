@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.listase.controlador;
 
 import com.listase.modelo.Infante;
@@ -11,6 +6,8 @@ import com.listase.modelo.Nodo;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import org.primefaces.model.diagram.Connection;
@@ -24,21 +21,20 @@ import org.primefaces.model.diagram.endpoint.EndPointAnchor;
 import org.primefaces.model.diagram.overlay.ArrowOverlay;
 import org.primefaces.model.diagram.overlay.LabelOverlay;
 
-/**
- *
- * @author carloaiza
- */
 @Named(value = "sesionInfante")
 @SessionScoped
 public class SesionInfante implements Serializable {
     private ListaSE listaInfantes;
     private Infante infante;
+    private Infante promedio;
     private String alInicio="1";
     private boolean deshabilitarFormulario=true;
     private Nodo ayudante;   
     private String textoVista="Gráfico";
+   
     
     private List listadoInfantes;
+  
     
     private DefaultDiagramModel model;
     
@@ -61,6 +57,8 @@ public class SesionInfante implements Serializable {
         infante = ayudante.getDato();     
         //Me llena el objeto List para la tabla
         listadoInfantes = listaInfantes.obtenerListaInfantes();
+     
+        //invertirLista();
         
         model = new DefaultDiagramModel();
         //Pude tener n flechas
@@ -104,7 +102,21 @@ public class SesionInfante implements Serializable {
         model.connect(createConnection(trouble.getEndPoints().get(2), succeed.getEndPoints().get(0), "No"));
         model.connect(createConnection(giveup.getEndPoints().get(2), fail.getEndPoints().get(0), "Yes"));
     }
-     
+    
+    public void invertirLista (){
+        Collections.reverse(listadoInfantes);
+      
+       
+       /* listaInfantesInv = new ArrayList();
+        for (int i = listadoInfantes.size(); i > 0; i--) {
+            listaInfantesInv.add(listadoInfantes.get(i-1));
+        }
+        for (int i = 0; i < listadoInfantes.size(); i++) {
+            System.out.println(listaInfantesInv.get(i));
+        }*/
+       
+    }
+      
     public DiagramModel getModel() {
         return model;
     }
@@ -243,4 +255,14 @@ public class SesionInfante implements Serializable {
         }
     }
     
+    public void promEdades (){
+        
+    byte n = 0;
+    for (byte i = 0; i < infante.getEdad(); i++) {
+    
+    n += infante.getEdad()/listadoInfantes.size();
+    }
+    }
+  
 }
+

@@ -63,13 +63,15 @@
                         <p:commandButton value="Nuevo" update="frmInfante" action="#{sesionInfante.habilitarFormulario()}"
                                          disabled="#{!sesionInfante.deshabilitarFormulario}"
                                          />
-                        <p:panelGrid columns="3">
+                        <p:panelGrid columns="4">
                             <p:commandButton value="Primero" action="#{sesionInfante.irPrimero()}" 
                                               update="frmInfante"/>
                             <p:commandButton value="Siguiente" action="#{sesionInfante.irSiguiente()}"
                                              update="frmInfante"/>       
                             <p:commandButton value="Último" action="#{sesionInfante.irUltimo()}" 
                                              update="frmInfante"/>                           
+                            <p:commandButton value="invertir Lista" action="#{sesionInfante.invertirLista()}" 
+                                             update="frmInfante"/> 
                             
                             
                             
@@ -107,7 +109,8 @@
                     </p:panel>
 
                 </p:panelGrid>
-                <p:outputLabel value="#{sesionInfante.listaInfantes.obtenerListadoInfantes()}"/>
+                <p:outputLabel value=" Nombres de los Infantes#{sesionInfante.listaInfantes.obtenerListadoInfantes()}"/> <br></br>
+                <p:outputLabel value="Promedio Edad : #{sesionInfante.promEdades()}"/> 
             </p:panel>
         </h:form>
     </h:body>

@@ -1,18 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.listase.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 public class Infante implements  Serializable{
     private String nombre; 
     private short codigo; 
-    private byte edad; 
-
+    private int edad; 
     public Infante() {
         this.edad=1;
     }
@@ -23,7 +19,8 @@ public class Infante implements  Serializable{
         this.codigo = codigo;
         this.edad = edad;
     }
-
+    
+     
     public String getNombre() {
         return nombre;
     }
@@ -40,7 +37,7 @@ public class Infante implements  Serializable{
         this.codigo = codigo;
     }
 
-    public byte getEdad() {
+    public int getEdad() {
         return edad;
     }
 
@@ -51,7 +48,20 @@ public class Infante implements  Serializable{
     @Override
     public String toString() {
        return this.nombre; 
+       
     }
+
+    public void invertLista(ArrayList<String> listaInfantes) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getEdad(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
+     
     
     
     
