@@ -26,7 +26,7 @@ import org.primefaces.model.diagram.overlay.LabelOverlay;
 public class SesionInfante implements Serializable {
     private ListaSE listaInfantes;
     private Infante infante;
-    private Infante promedio;
+    private Infante promEdades;
     private String alInicio="1";
     private boolean deshabilitarFormulario=true;
     private Nodo ayudante;   
@@ -49,14 +49,15 @@ public class SesionInfante implements Serializable {
     {
         listaInfantes = new ListaSE();        
         //LLenado de la bds
-        listaInfantes.adicionarNodo(new Infante("Carlitos",(short) 1, (byte)2));
-        listaInfantes.adicionarNodo(new Infante("Juanita",(short) 2, (byte)3));
-        listaInfantes.adicionarNodo(new Infante("Martina",(short) 3, (byte)1));
-        listaInfantes.adicionarNodoAlInicio(new Infante("Mariana",(short) 4, (byte)5));
+        listaInfantes.adicionarNodo(new Infante("Carlitos",(short) 1, (byte)2, "Masculino"));
+        listaInfantes.adicionarNodo(new Infante("Juanita",(short) 2, (byte)3, "Femenino"));
+        listaInfantes.adicionarNodo(new Infante("Martina",(short) 3, (byte)1, "Femenino"));
+        listaInfantes.adicionarNodoAlInicio(new Infante("Mariana",(short) 4, (byte)5, "Femenino"));
         ayudante = listaInfantes.getCabeza();
         infante = ayudante.getDato();     
         //Me llena el objeto List para la tabla
         listadoInfantes = listaInfantes.obtenerListaInfantes();
+    
      
         //invertirLista();
         
@@ -138,6 +139,14 @@ public class SesionInfante implements Serializable {
 
     public void setTextoVista(String textoVista) {
         this.textoVista = textoVista;
+    }
+
+    public Infante getPromEdades() {
+        return promEdades;
+    }
+
+    public void setPromEdades(Infante promEdades) {
+        this.promEdades = promEdades;
     }
 
     
@@ -257,12 +266,17 @@ public class SesionInfante implements Serializable {
     
     public void promEdades (){
         
-    byte n = 0;
-    for (byte i = 0; i < infante.getEdad(); i++) {
+    int n = 0;
+    int promedio= 0;
     
-    n += infante.getEdad()/listadoInfantes.size();
+    for (int i = 0; i < infante.getEdad(); i++) {
+    
+    n += infante.getEdad();
     }
+       promedio = n/listadoInfantes.size();
+        System.out.println(promEdades.getEdad());
     }
+    
+    
   
 }
-
